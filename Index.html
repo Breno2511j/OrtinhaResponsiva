@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ortinha</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h2 class="logo">🌿 Ortinha</h2>
+
+      <div class="divbusca">
+        <form action="" class="formbusca">
+          <select name="categoria">
+            <option value="">Todas</option>
+            <option value="Suculentas">Suculentas</option>
+            <option value="Hortaliças">Hortaliças</option>
+            <option value="Frutíferas">Frutíferas</option>
+            <option value="Ornamentais">Ornamentais</option>
+            <option value="Aromáticas">Aromáticas</option>
+            <option value="Trepadeiras">Trepadeiras</option>
+          </select>
+          <input type="search" placeholder="Buscar plantinhas..." />
+          <button type="submit">🔍</button>
+        </form>
+      </div>
+
+      <nav class="navlinks">
+        <a href="#" class="navitem"> Início</a>
+        <a href="#" class="navitem"> Categorias</a>
+        <a href="#" class="navitem"> Favoritos</a>
+        <a href="#" class="navitem"> Conta</a>
+        <a href="#" class="navitem navitem--cart">🛒 Carrinho</a>
+      </nav>
+    </header>
+
+    <div class="categorias-bar">
+      <button class="cattag">🌵 Suculentas</button>
+      <button class="cattag">🥬 Hortaliças</button>
+      <button class="cattag">🍋 Frutíferas</button>
+      <button class="cattag">🌸 Ornamentais</button>
+      <button class="cattag">🌿 Aromáticas</button>
+      <button class="cattag">🍃 Trepadeiras</button>
+      <button class="cattag">🥜 Sementes</button>
+      <button class="cattag">🌱 Mudas</button>
+    </div>
+
+    <main class="main">
+      <div class="anuncio">
+        <h1>🌱 Cultive seu próprio jardim em casa!</h1>
+        <img src="https://hortodasacacias.com.br/wp-content/uploads/2025/10/banner1-planta-1.jpg"/>
+      </div>
+
+      <section class="acessorapido">
+        <h2>Acesso Rápido</h2>
+        <div class="acessorapido-content">
+          <div class="acessorapido-item">
+            <img src="/Imgs/Sementes.jpg" alt="Sementes" />
+            Sementes
+          </div>
+          <div class="acessorapido-item">
+            <img src="/Imgs/Mudas.avif" alt="Mudas" />
+            Mudas
+          </div>
+          <div class="acessorapido-item">
+            <img src="/Imgs/Madura.jpg" alt="Madura" />
+            Maduras
+          </div>
+          <div class="acessorapido-item">
+            <img src="/Imgs/Presente.avif" alt="Presente" />
+            Presentes
+          </div>
+        </div>
+      </section>
+
+      <section class="maisvendidas">
+        <h2>Mais vendidas</h2>
+        <div class="maisvendidas-content" id="listaProdutos"></div>
+      </section>
+    </main>
+
+    <script>
+      const container = document.getElementById("listaProdutos");
+
+      const nomes = [
+        "Suculenta",
+        "Orquídea",
+        "Samambaia",
+        "Cacto",
+        "Hortelã",
+        "Manjericão",
+        "Lavanda",
+        "Alecrim",
+        "Bonsai",
+      ];
+
+      const imagens = [
+        "/Imgs/Suculenta.jpg",
+        "/Imgs/Hortaliça.jpg",
+        "/Imgs/Suculenta.jpg",
+        "/Imgs/Hortaliça.jpg",
+      ];
+
+      function randomItem(lista) {
+        return lista[Math.floor(Math.random() * lista.length)];
+      }
+
+      for (let i = 0; i < 15; i++) {
+        const nome = randomItem(nomes);
+        const preco = Math.floor(Math.random() * 30) + 10;
+        const img = randomItem(imagens);
+
+        const item = document.createElement("div");
+        item.classList.add("maisvendidas-item");
+
+        item.innerHTML = `
+          <img src="${img}" alt="${nome}">
+          <h3>${nome}</h3>
+          <p class="preco">R$ ${preco},00</p>
+          <div class="acoes">
+            <button class="btn-comprar">Comprar</button>
+            <button class="btn-carrinho">🛒</button>
+          </div>
+        `;
+
+        container.appendChild(item);
+      }
+    </script>
+  </body>
+</html>
